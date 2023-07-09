@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2>My Shopping Bag</h2>
+        </div>
+        <div class="card-body">
+          <div>
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price Details</th>
+                  <th scope="col">Order Total</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let prod of shoppingList">
+                <tr>
+                  <td>{{prod.pName}}</td>
+                  <td>{{prod.pQty}}</td>
+                  <td>$ RM {{prod.pPrice}}</td>
+                  <td>{{prod.pPrice* prod.pQty}}</td>
+                  <td>
+                    <button class="btn-danger" (click)="deleteProduct(prod)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+              <tr>
+                <td colspan="3" class="text-right">Total</td>
+                <td>{{priceTotal()}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
