@@ -8,7 +8,7 @@ import { ShoppingService } from "../shared/services/shopping.service";
 })
 
 export class HeaderComponent implements OnInit{
-  quantity : number = 0
+
   constructor(private shopServe : ShoppingService){}
 
   ngOnInit() :void {

@@ -1,6 +1,5 @@
-import { BehaviorSubject } from "rxjs";
-import { Product } from "../model/product.model";
 
+import { Product } from "../model/product.model";
 
 
 export class ShoppingService {
@@ -8,7 +7,7 @@ export class ShoppingService {
 
   addToBag(product: Product) {
     const productExistInBag = this.ShoppingBag
-                    .find(({pName}) => pName === product.pName); // find product by name
+                    .find(({pName}) => pName === product.pName);
     if (!productExistInBag) {
       this.ShoppingBag.push({...product});
       return;
@@ -18,9 +17,9 @@ export class ShoppingService {
     }
   }
 
-  bagQuantity(){
-    return this.ShoppingBag.reduce((acc, prod) => acc+= prod.pQty ,0)
-  }
+  // bagQuantity(pQ : any){
+  //   return this.ShoppingBag.reduce((acc, prod) => acc+= prod.pQty ,0)
+  // }
 
   getProducts() {
     return this.ShoppingBag;

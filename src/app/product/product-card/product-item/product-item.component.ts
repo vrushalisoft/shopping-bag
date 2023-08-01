@@ -23,11 +23,11 @@ export class ProductItemComponent implements OnInit{
   plus(){
     this.counter +=1;
   }
-minus(){
-    if(this.counter >1){
-      this.counter -=1;
+  minus(){
+      if(this.counter >1){
+        this.counter -=1;
+      }
     }
-  }
 
 
   addToBag(product : Product){

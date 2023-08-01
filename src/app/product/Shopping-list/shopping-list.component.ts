@@ -17,11 +17,9 @@ export class ShoppingListComponent implements OnInit{
     this.shoppingList = this.shopServe.getProducts();
   }
 
-
   deleteProduct(product: any) {
     this.shoppingList = this.shoppingList.filter(({pName}) => pName !== product.pName)
   }
-
 
   priceTotal(){
    return this.shoppingList.reduce((acc, prod) => acc+= prod.pPrice * prod.pQty ,0)

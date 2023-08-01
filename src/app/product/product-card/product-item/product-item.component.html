@@ -1,14 +1,16 @@
 
- <div class="card p-2 mb-3 text-center">
-  <img class="card-img-top image-size" [src]="product.pImg" [alt]="product.pImg">
-  <div class="card-body">
-    <h5 class="card-title font-weight-bold">{{product.pName}}</h5>
-    <p class="card-text text-danger">$ RM{{product.pPrice}}</p>
-    <div class="btn-group mb-4" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" (click)="minus()"><i class="fa fa-minus"></i></button>
-      <input type="number"  class="form-control text-center mx-2"  [value]="counter" >
-      <button type="button" class="btn btn-secondary"(click)="plus()"><i class="fa fa-plus"></i></button>
-    </div><br>
-    <button type="submit" (click)="addToBag(product)" class="btn btn-outline-dark">Add to Bag</button>
+  <div class="card p-2 mb-3 text-center" style="width: 15rem;" >
+    <img class="card-img-top img-size" [src]="product.pImg" [alt]="product.pImg" >
+    <div class="card-body">
+      <h5 class="card-title font-weight-bold">{{product.pName}}</h5>
+      <p class="card-text text-danger">$ RM{{product.pPrice}}</p>
+      <div class="btn-group mb-4" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="minus()"><i class="fa fa-minus"></i></button>
+        <input type="number"  class="form-control text-center mx-2"  [value]="counter" >
+        <button type="button" class="btn btn-secondary"(click)="plus()"><i class="fa fa-plus"></i></button>
+      </div><br>
+      <button type="submit" (click)="addToBag(product)" class="btn btn-outline-dark">Add to Bag</button>
+    </div>
   </div>
-</div>
+
+

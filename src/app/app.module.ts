@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductFormComponent } from './product/product-form/product-form.component';
 import { ProductService } from './shared/services/product.service';
 import { ShoppingService } from './shared/services/shopping.service';
-import { UploadImageComponent } from './product/product-form/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,8 @@ import { UploadImageComponent } from './product/product-form/upload-image/upload
     ProductCardComponent,
     ShoppingListComponent,
     ProductFormComponent,
-    ProductComponent,
-    UploadImageComponent
+    ProductComponent
+
   ],
   imports: [
   BrowserModule,

@@ -1,8 +1,8 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/model/product.model';
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,8 +12,11 @@ import { Product } from '../../shared/model/product.model';
 })
 export class ProductFormComponent implements OnInit {
   productForm : any;
-  imageURL: string = '';
-  constructor( private productServe : ProductService){}
+  url : any;
+
+  size_limit :boolean =false;
+
+  constructor( private productServe : ProductService, private http: HttpClient){}
 
   ngOnInit(): void {
       this.productForm = new FormGroup({
@@ -24,40 +27,27 @@ export class ProductFormComponent implements OnInit {
       })
   }
 
+  onImgChange(event: any) {
+    const file = event.currentTarget.files[0];
+    const maxSize = 100*1024;
+    const reader = new FileReader();
+    if (file.size <= maxSize) {
+      reader.onload = (e : any) => {
+        this.url= e.currentTarget.result;
+        }
+        reader.readAsDataURL(file);
+     } else{
+      alert("please select image size less than 100kb");
+     }
 
-  onFileChange(event : any, field : any) {
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      if (!file.type.startsWith('image')) {
-        this.productForm.get(field).setErrors({
-          required: true
-        });
-      } else {
-        this.productForm.patchValue({
-          [field]: file
-        });
-      }
-    }
   }
 
+
   onSubmit(){
-    // const formData = new FormData();
-    // formData.append('pImg', this.productForm.get('fileSource').value);
-    // this.http.post('http://localhost:8001/upload.php', formData)
-    //   .subscribe(res => {
-    //     console.log(res);
-    //     alert('Uploaded Successfully.');
-    //   })
-    const formData = new FormData();
-    Object.entries(this.productForm.value).forEach(
-      ([key, value]: any[]) => {
-        formData.set(key, value);
-      }
-    )
 
     let prod = this.productForm.value;
     console.log(prod)
-    let productObj = new Product(prod.pName, prod.pQty, prod.pPrice, prod.pImg)
+    let productObj = new Product(prod.pName, prod.pQty, prod.pPrice, this.url)
     this.productServe.addNewProductToList(productObj);
     this.productForm.reset();
   }
